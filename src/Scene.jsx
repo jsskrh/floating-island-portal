@@ -6,6 +6,7 @@ import {
 import React, { Suspense } from "react";
 import FloatingIsland from "./FloatingIsland";
 import FloatingRocks from "./FloatingRocks";
+import Grass from "./Grass";
 import Portal from "./Portal";
 import Rocks from "./Rocks";
 import Trees from "./Trees";
@@ -28,6 +29,7 @@ const Scene = () => {
       <Rocks />
       <Trees />
       <Words />
+      <Grass />
       <FloatingIsland />
       <FloatingRocks />
     </Suspense>

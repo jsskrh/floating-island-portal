@@ -12,6 +12,7 @@ import {
   HueSaturation,
 } from "@react-three/postprocessing";
 import React, { Suspense } from "react";
+import { Color, CylinderGeometry, Mesh, MeshBasicMaterial } from "three";
 import FloatingIsland from "./FloatingIsland";
 import FloatingRocks from "./FloatingRocks";
 import Grass from "./Grass";
@@ -19,6 +20,19 @@ import Portal from "./Portal";
 import Rocks from "./Rocks";
 import Trees from "./Trees";
 import Words from "./Words";
+
+let lightColor = new Color(1, 0.2, 0.1);
+let mesh = new Mesh(
+  new CylinderGeometry(0.3, 0.3, 0.2, 20),
+  new MeshBasicMaterial({
+    color: lightColor,
+    transparent: true,
+    opacity: 1,
+  })
+);
+mesh.rotation.x = Math.PI * 0.5;
+mesh.position.set(1.17, 10.7, -4.1);
+mesh.scale.set(1.5, 1, 1);
 
 const Scene = () => {
   return (
@@ -34,17 +48,30 @@ const Scene = () => {
       <OrbitControls target={[1, 5, 0]} maxPolarAngle={Math.PI * 0.5} />
 
       <Float speed={0.5} rotationIntensity={0.6} floatIntensity={0.6}>
+        <primitive object={mesh} />
+        <spotLight
+          penumbra={1}
+          distance={500}
+          angle={60.65}
+          attenuation={1}
+          anglePower={3}
+          intensity={0.3}
+          color={lightColor}
+          position={[1.19, 10.85, -4.45]}
+          target-position={[0, 0, -1]}
+        />
+
         <Portal />
         <Rocks />
+        <FloatingIsland />
         <Trees />
         <Words />
         <Grass />
-        <FloatingIsland />
       </Float>
 
       <FloatingRocks />
 
-      <EffectComposer stencilBuffer={true}>
+      {/* <EffectComposer stencilBuffer={true}>
         <DepthOfField
           focusDistance={0.012}
           focalLength={0.015}
@@ -56,7 +83,7 @@ const Scene = () => {
           radialModulation={true}
           offset={[0.00175, 0.00175]}
         />
-      </EffectComposer>
+      </EffectComposer> */}
     </Suspense>
   );
 };

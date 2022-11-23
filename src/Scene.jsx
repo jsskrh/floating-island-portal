@@ -1,5 +1,6 @@
 import {
   Environment,
+  Float,
   OrbitControls,
   PerspectiveCamera,
 } from "@react-three/drei";
@@ -25,12 +26,14 @@ const Scene = () => {
       />
       <OrbitControls target={[1, 5, 0]} maxPolarAngle={Math.PI * 0.5} />
 
-      <Portal />
-      <Rocks />
-      <Trees />
-      <Words />
-      <Grass />
-      <FloatingIsland />
+      <Float speed={0.5} rotationIntensity={0.6} floatIntensity={0.6}>
+        <Portal />
+        <Rocks />
+        <Trees />
+        <Words />
+        <Grass />
+        <FloatingIsland />
+      </Float>
       <FloatingRocks />
     </Suspense>
   );

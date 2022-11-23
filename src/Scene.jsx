@@ -5,6 +5,9 @@ import {
 } from "@react-three/drei";
 import React, { Suspense } from "react";
 import FloatingIsland from "./FloatingIsland";
+import FloatingRocks from "./FloatingRocks";
+import Portal from "./Portal";
+import Rocks from "./Rocks";
 
 const Scene = () => {
   return (
@@ -19,7 +22,10 @@ const Scene = () => {
       />
       <OrbitControls target={[1, 5, 0]} maxPolarAngle={Math.PI * 0.5} />
 
-      <FloatingIsland />
+      {/* <Portal /> */}
+      <Rocks />
+      {/* <FloatingIsland /> */}
+      <FloatingRocks />
     </Suspense>
   );
 };

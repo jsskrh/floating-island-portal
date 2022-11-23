@@ -3,22 +3,17 @@ import React from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 const FloatingRocks = () => {
-  const gltf = useLoader(GLTFLoader, "/models/floating_rock_1.glb");
+  const rock1 = useLoader(GLTFLoader, "/models/floating_rock_1.glb");
+  const rock2 = useLoader(GLTFLoader, "/models/floating_rock_2.glb");
+  const rock3 = useLoader(GLTFLoader, "/models/floating_rock_3.glb");
 
-  //   useEffect(() => {
-  //     if (!gltf) return;
-
-  //     let mesh = gltf.scene.children[0];
-
-  //     let uvs = mesh.geometry.attributes.uv.array;
-  //     mesh.geometry.setAttribute("uv2", new BufferAttribute(uvs, 2));
-
-  //     mesh.material.lightMap = mesh.material.map;
-  //     mesh.material.lightMapIntensity = 400;
-  //     mesh.material.color = new Color(0.04, 0.06, 0.1);
-  //   }, [gltf]);
-
-  return <primitive object={gltf.scene} />;
+  return (
+    <>
+      <primitive object={rock2.scene} position={[-20.5, -7, -19]} />
+      <primitive object={rock1.scene} position={[-5, 10, -33]} />
+      <primitive object={rock3.scene} position={[20, 3.5, -9]} />
+    </>
+  );
 };
 
 export default FloatingRocks;

@@ -2,7 +2,7 @@ import { useLoader } from "@react-three/fiber";
 import React from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-const Rocks = () => {
+const FloatingRocks = () => {
   const gltf = useLoader(GLTFLoader, "/models/floating_rock_1.glb");
 
   //   useEffect(() => {
@@ -21,4 +21,4 @@ const Rocks = () => {
   return <primitive object={gltf.scene} />;
 };
 
-export default Rocks;
+export default FloatingRocks;

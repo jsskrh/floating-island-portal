@@ -8,6 +8,8 @@ import FloatingIsland from "./FloatingIsland";
 import FloatingRocks from "./FloatingRocks";
 import Portal from "./Portal";
 import Rocks from "./Rocks";
+import Trees from "./Trees";
+import Words from "./Words";
 
 const Scene = () => {
   return (
@@ -22,9 +24,11 @@ const Scene = () => {
       />
       <OrbitControls target={[1, 5, 0]} maxPolarAngle={Math.PI * 0.5} />
 
-      {/* <Portal /> */}
+      <Portal />
       <Rocks />
-      {/* <FloatingIsland /> */}
+      <Trees />
+      <Words />
+      <FloatingIsland />
       <FloatingRocks />
     </Suspense>
   );

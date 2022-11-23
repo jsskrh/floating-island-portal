@@ -4,6 +4,7 @@ import {
   PerspectiveCamera,
 } from "@react-three/drei";
 import React, { Suspense } from "react";
+import FloatingIsland from "./FloatingIsland";
 
 const Scene = () => {
   return (
@@ -17,6 +18,8 @@ const Scene = () => {
         position={[-1.75, 10.85, 20.35]}
       />
       <OrbitControls target={[1, 5, 0]} maxPolarAngle={Math.PI * 0.5} />
+
+      <FloatingIsland />
     </Suspense>
   );
 };

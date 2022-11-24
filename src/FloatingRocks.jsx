@@ -30,7 +30,7 @@ const FloatingRocks = () => {
 
       <Float
         speed={1.5}
-        rotationIntensity={1.6}
+        rotationIntensity={1.1}
         floatIntensity={0}
         position={[20, 3.5, -9]}
       >

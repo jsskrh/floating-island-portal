@@ -76,7 +76,7 @@ const Scene = () => {
       <FloatingRocks />
 
       <EffectComposer stencilBuffer={true}>
-        {/* <DepthOfField
+        <DepthOfField
           focusDistance={0.012}
           focalLength={0.015}
           bokehScale={7}
@@ -86,7 +86,7 @@ const Scene = () => {
         <ChromaticAberration
           radialModulation={true}
           offset={[0.00175, 0.00175]}
-        /> */}
+        />
         <GodRays
           sun={mesh}
           blendFunction={BlendFunction.Screen}

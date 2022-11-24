@@ -9,8 +9,10 @@ import {
   ChromaticAberration,
   DepthOfField,
   EffectComposer,
+  GodRays,
   HueSaturation,
 } from "@react-three/postprocessing";
+import { BlendFunction, Resizer, KernelSize } from "postprocessing";
 import React, { Suspense } from "react";
 import { Color, CylinderGeometry, Mesh, MeshBasicMaterial } from "three";
 import FloatingIsland from "./FloatingIsland";
@@ -71,8 +73,8 @@ const Scene = () => {
 
       <FloatingRocks />
 
-      {/* <EffectComposer stencilBuffer={true}>
-        <DepthOfField
+      <EffectComposer stencilBuffer={true}>
+        {/* <DepthOfField
           focusDistance={0.012}
           focalLength={0.015}
           bokehScale={7}
@@ -82,8 +84,22 @@ const Scene = () => {
         <ChromaticAberration
           radialModulation={true}
           offset={[0.00175, 0.00175]}
+        /> */}
+        <GodRays
+          sun={mesh}
+          blendFunction={BlendFunction.Screen}
+          samples={40}
+          density={0.97}
+          decay={0.97}
+          weight={0.6}
+          exposure={0.3}
+          clampMax={1}
+          width={Resizer.AUTO_SIZE}
+          height={Resizer.AUTO_SIZE}
+          kernelSize={KernelSize.SMALL}
+          blur={true}
         />
-      </EffectComposer> */}
+      </EffectComposer>
     </Suspense>
   );
 };

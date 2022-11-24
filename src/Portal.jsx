@@ -1,5 +1,5 @@
 import { useFrame, useLoader } from "@react-three/fiber";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   AlwaysStencilFunc,
   DoubleSide,
@@ -29,6 +29,12 @@ window.addEventListener("resize", () => {
 });
 
 const Portal = () => {
+  const [hovered, setHovered] = useState(false);
+
+  useEffect(() => {
+    document.body.style.cursor = hovered ? "pointer" : "auto";
+  }, [hovered]);
+
   const model = useLoader(GLTFLoader, "/models/portal.glb");
   const mask = useLoader(GLTFLoader, "/models/portal_mask.glb");
 
@@ -56,7 +62,12 @@ const Portal = () => {
   return (
     <>
       <primitive object={model.scene} />
-      <primitive object={mask.scene} />
+      <primitive
+        object={mask.scene}
+        onPointerOver={() => setHovered(true)}
+        onPointerOut={() => setHovered(false)}
+        onClick={() => window.open("https://jesseakorah.netlify.app", "_blank")}
+      />
       <FillQuad map={target.texture} maskId={1} />
     </>
   );
